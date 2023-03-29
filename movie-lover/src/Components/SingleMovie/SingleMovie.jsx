@@ -2,9 +2,8 @@ import React from 'react';
 
 const SingleMovie = (props) => {
 
-    console.log(props.movie);
     const {movieName,watchTime,description, poster,category,imdbRating} = props.movie;
-
+    const handleMovie = props.handleMovie;
 
     return (
         <>
@@ -23,7 +22,7 @@ const SingleMovie = (props) => {
                                 <p><strong>Rating: </strong>{imdbRating}</p>
                             </div>
                             <div className="text-center">
-                                <button type="button" className="btn btn-warning">Book Now</button>
+                                <button onClick={()=> handleMovie(watchTime)} type="button" className="btn btn-warning">Book Now</button>
                             </div>
                     </div> 
 
