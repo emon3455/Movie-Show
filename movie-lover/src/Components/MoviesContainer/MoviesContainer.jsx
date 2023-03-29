@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addTime, getTime } from '../../fakeDB';
 import Cart from '../Cart/Cart';
 import SingleMovie from '../SingleMovie/SingleMovie';
 
@@ -8,13 +9,19 @@ const MoviesContainer = () => {
     const [watchTime , setWatchTime] = useState(0);
 
     useState(()=>{
+
         fetch("data.json")
         .then(res=> res.json())
         .then(data=> setMovies(data))
+
+        setWatchTime(getTime());
+
     },[])
 
     const handleMovie=(time)=>{
-        setWatchTime(watchTime+time);
+        const tm = getTime();
+        setWatchTime(tm)
+        setWatchTime(watchTime+time); 
     }
 
 
@@ -42,7 +49,7 @@ const MoviesContainer = () => {
 
                 </div>
 
-                <div className="col-12  col-lg-3 bg-black text-white">
+                <div className="col-12  col-lg-3">
 
                         <Cart watchTime={watchTime}></Cart>
                     
